@@ -1,0 +1,6 @@
+*.DSYM
+*.o
+myprog
+tags
+*.DS_Store
+assets
