@@ -11,6 +11,7 @@ public:
   void pushState(GameState *pState);
   void changeState(GameState *pState);
   void popState();
+  void changeStateByName(std::string);
 
   void update();
   void render();

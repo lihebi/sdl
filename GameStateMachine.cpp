@@ -1,4 +1,5 @@
 #include "GameStateMachine.h"
+#include "PlayState.h"
 
 void GameStateMachine::pushState(GameState *pState) {
   m_gameStates.push_back(pState);
@@ -36,5 +37,11 @@ void GameStateMachine::update() {
 void GameStateMachine::render() {
   if (!m_gameStates.empty()) {
     m_gameStates.back()->render();
+  }
+}
+
+void GameStateMachine::changeStateByName(std::string state) {
+  if (state=="PlayState") {
+    changeState(new PlayState());
   }
 }
