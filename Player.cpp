@@ -2,6 +2,7 @@
 #include "InputHandler.h"
 
 Player::Player(const LoaderParams *pParams) : SDLGameObject(pParams) {
+  m_numFrames = 5;
 }
 
 void Player::draw() {
@@ -10,6 +11,7 @@ void Player::draw() {
 
 void Player::update() {
   handleInput();
+  m_currentFrame = int(((SDL_GetTicks() /100 ) % m_numFrames));
   SDLGameObject::update();
 }
 

@@ -3,6 +3,7 @@
 
 #include "GameState.h"
 #include "GameObject.h"
+#include "SDLGameObject.h"
 
 class PlayState : public GameState {
 public:
@@ -14,6 +15,8 @@ public:
   virtual bool onExit();
 
   virtual std::string getStateID() const  { return s_playID; }
+
+  bool checkCollision(SDLGameObject *p1, SDLGameObject *p2);
 
 private:
 
