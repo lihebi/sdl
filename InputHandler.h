@@ -21,6 +21,7 @@ public:
     return s_pInstance;
   }
 
+  void reset();
   void update();
 
   bool isKeyDown(SDL_Scancode key) const;

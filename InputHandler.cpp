@@ -14,6 +14,12 @@ InputHandler::~InputHandler() {
   delete m_keystates;
 }
 
+void InputHandler::reset() {
+  m_mouseButtonStates[LEFT] = false;
+  m_mouseButtonStates[MIDDLE] = false;
+  m_mouseButtonStates[RIGHT] = false;
+}
+
 bool InputHandler::isKeyDown(SDL_Scancode key) const {
   if (m_keystates != 0) {
     if (m_keystates[key] == 1) {
@@ -61,15 +67,6 @@ void InputHandler::onMouseButtonUp(SDL_Event &event) {
   }
 }
 void InputHandler::onMouseButtonDown(SDL_Event &event) {
-  // if (event.button.button == SDL_BUTTON_LEFT) {
-  //   m_mouseButtonStates[LEFT] = true;
-  // }
-  // if (event.button.button == SDL_BUTTON_MIDDLE) {
-  //   m_mouseButtonStates[MIDDLE] = true;
-  // }
-  // if (event.button.button == SDL_BUTTON_RIGHT) {
-  //   m_mouseButtonStates[RIGHT] = true;
-  // }
   switch(event.button.button) {
     case SDL_BUTTON_LEFT: m_mouseButtonStates[LEFT] = true; break;
     case SDL_BUTTON_MIDDLE: m_mouseButtonStates[MIDDLE] = true; break;
@@ -79,9 +76,6 @@ void InputHandler::onMouseButtonDown(SDL_Event &event) {
 
 void InputHandler::onKeyDown() {
   m_keystates = SDL_GetKeyboardState(0);
-  if (isKeyDown(SDL_SCANCODE_ESCAPE)) {
-    TheGame::Instance()->quit();
-  }
 }
 
 void InputHandler::onKeyUp() {
