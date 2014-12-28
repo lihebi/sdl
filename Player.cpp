@@ -20,19 +20,3 @@ void Player::handleInput() {
   m_velocity = *target - m_position;
   m_velocity /= 50;
 }
-
-
-
-Enemy::Enemy(const LoaderParams *pParams) : SDLGameObject(pParams) {
-}
-
-void Enemy::draw() {
-  SDLGameObject::draw();
-}
-
-void Enemy::update() {
-  // m_x++;
-  m_currentFrame = int(((SDL_GetTicks() /100 ) % 6));
-}
-
-void Enemy::clean() {}
