@@ -15,8 +15,14 @@ bool Game::init(const char *title, int xpos, int ypos, int width, int height, in
   m_pGameStateMachine = new GameStateMachine();
   m_pGameStateMachine->changeState(new MenuState());
 
+  m_bHasPendingState = false;
   m_bRunning = true;
   return true;
+}
+
+void Game::requestChangeState(GameState *pState) {
+  m_bHasPendingState = true;
+  m_pPendingState = pState;
 }
 
 void Game::render() {
@@ -29,6 +35,10 @@ void Game::render() {
 
 void Game::update() {
   m_pGameStateMachine->update();
+  if (m_bHasPendingState) {
+    m_pGameStateMachine->changeState(m_pPendingState);
+    m_bHasPendingState = false;
+  }
 }
 
 void Game::clean() {

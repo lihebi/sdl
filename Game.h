@@ -36,6 +36,7 @@ public:
   void quit() { std::cout<<"quit"<<std::endl;m_bRunning=false;}
 
   GameStateMachine* getStateMachine() { return m_pGameStateMachine; }
+  void requestChangeState(GameState *pState);
 
 private:
   Game() {}
@@ -49,6 +50,9 @@ private:
   std::vector<GameObject*> m_gameObjects;
 
   GameStateMachine *m_pGameStateMachine;
+
+  bool m_bHasPendingState;
+  GameState *m_pPendingState;
 };
 
 typedef Game TheGame;
