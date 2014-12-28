@@ -35,6 +35,8 @@ public:
   SDL_Renderer* getRenderer() const { return m_pRenderer;}
   void quit() { std::cout<<"quit"<<std::endl;m_bRunning=false;}
 
+  GameStateMachine* getStateMachine() { return m_pGameStateMachine; }
+
 private:
   Game() {}
   ~Game() {}
