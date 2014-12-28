@@ -7,6 +7,7 @@
 #include "TextureManager.h"
 #include "GameObject.h"
 #include "Player.h"
+#include "GameStateMachine.h"
 
 class Game {
 public:
@@ -44,6 +45,8 @@ private:
   SDL_Renderer *m_pRenderer;
   bool m_bRunning;
   std::vector<GameObject*> m_gameObjects;
+
+  GameStateMachine *m_pGameStateMachine;
 };
 
 typedef Game TheGame;
