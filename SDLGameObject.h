@@ -16,7 +16,7 @@ public:
 protected:
 
   Vector2D m_position;
-  
+
   int m_width;
   int m_height;
 
@@ -24,6 +24,9 @@ protected:
   int m_currentFrame;
 
   std::string m_textureID;
+
+  Vector2D m_velocity;
+  Vector2D m_acceleration;
 };
 
 #endif
