@@ -11,6 +11,8 @@ m_velocity(0,0), m_acceleration(0,0) {
 
   m_currentRow = 1;
   m_currentFrame = 1;
+
+  m_numFrames = 1;
 }
 
 void SDLGameObject::draw() {

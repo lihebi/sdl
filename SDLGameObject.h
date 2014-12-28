@@ -23,6 +23,8 @@ protected:
   int m_currentRow;
   int m_currentFrame;
 
+  int m_numFrames;
+
   std::string m_textureID;
 
   Vector2D m_velocity;
