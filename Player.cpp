@@ -9,19 +9,6 @@ void Player::draw() {
 }
 
 void Player::update() {
-  if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_A)) {
-    m_x--;
-  }
-  if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_S)) {
-    m_y++;
-  }
-  if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_D)) {
-    m_x++;
-  }
-  if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_W)) {
-    m_y--;
-  }
-
   m_currentFrame = int(((SDL_GetTicks() /100 ) % 6));
 }
 
