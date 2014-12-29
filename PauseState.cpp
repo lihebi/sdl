@@ -2,8 +2,9 @@
 #include "Game.h"
 #include "TextureManager.h"
 #include "MenuButton.h"
-#include "MenuState.h"
+#include "MainMenuState.h"
 #include "InputHandler.h"
+#include "StateParser.h"
 
 const std::string PauseState::s_pauseID = "PAUSE";
 
@@ -12,7 +13,7 @@ PauseState::PauseState() {}
 PauseState::~PauseState() {}
 
 void PauseState::s_pauseToMain() {
-  TheGame::Instance()->requestChangeState(new MenuState());
+  TheGame::Instance()->requestChangeState(new MainMenuState());
 }
 
 void PauseState::s_resumePlay() {
@@ -32,19 +33,25 @@ void PauseState::render() {
 }
 
 bool PauseState::onEnter() {
-  TheTextureManager::Instance()->load("assets/resume.png", "resumebutton",
-  TheGame::Instance()->getRenderer());
-  TheTextureManager::Instance()->load("assets/main.png", "mainbutton",
-  TheGame::Instance()->getRenderer());
+  StateParser stateParser;
+  stateParser.parseState("test.xml", s_pauseID, &m_gameObjects, &m_textureIDList);
 
-  GameObject *button1 = new MenuButton(
-  new LoaderParams(200, 100, 200, 80, "mainbutton"), s_pauseToMain);
-  GameObject *button2 = new MenuButton(
-  new LoaderParams(200, 300, 200, 80, "resumebutton"), s_resumePlay);
+  m_callbacks.push_back(0);
+  m_callbacks.push_back(s_pauseToMain);
+  m_callbacks.push_back(s_resumePlay);
 
-  m_gameObjects.push_back(button1);
-  m_gameObjects.push_back(button2);
+  setCallbacks(m_callbacks);
+
   return true;
+}
+
+void PauseState::setCallbacks(const std::vector<Callback> &callbacks) {
+  for (int i=0;i<m_gameObjects.size();i++) {
+    if (dynamic_cast<MenuButton*>(m_gameObjects[i])) {
+      MenuButton *pButton = dynamic_cast<MenuButton*>(m_gameObjects[i]);
+      pButton->setCallback(callbacks[pButton->getCallbackID()]);
+    }
+  }
 }
 
 bool PauseState::onExit() {
@@ -52,8 +59,12 @@ bool PauseState::onExit() {
     m_gameObjects[i]->clean();
   }
   m_gameObjects.clear();
-  TheTextureManager::Instance()->clearFromTextureMap("resumebutton");
-  TheTextureManager::Instance()->clearFromTextureMap("mainbutton");
+  // TheTextureManager::Instance()->clearFromTextureMap("resumebutton");
+  // TheTextureManager::Instance()->clearFromTextureMap("mainbutton");
+
+  for (int i=0;i<m_textureIDList.size();i++) {
+    TheTextureManager::Instance()->clearFromTextureMap(m_textureIDList[i]);
+  }
 
   TheInputHandler::Instance()->reset();
   return true;

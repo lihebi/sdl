@@ -1,8 +1,11 @@
 #include "Player.h"
 #include "InputHandler.h"
 
-Player::Player(const LoaderParams *pParams) : SDLGameObject(pParams) {
-  m_numFrames = 5;
+Player::Player() : SDLGameObject() {
+}
+
+void Player::load(const LoaderParams *pParams) {
+  SDLGameObject::load(pParams);
 }
 
 void Player::draw() {

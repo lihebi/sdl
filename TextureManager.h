@@ -10,9 +10,8 @@ class TextureManager {
 public:
 
   static TextureManager* Instance() {
-    if (s_pInstance == 0) {
+    if (s_pInstance == NULL) {
       s_pInstance = new TextureManager();
-      return s_pInstance;
     }
     return s_pInstance;
   }

@@ -1,12 +1,14 @@
 CC=g++
 CFLAGS = -g -Wall `sdl2-config --cflags`
-INCLUDES =
+INCLUDES = -I/usr/local/include
 LFLAGS =
-LIBS = `sdl2-config --libs` -lSDL2_image
-SRCS = Game.cpp main.cpp TextureManager.cpp SDLGameObject.cpp Player.cpp\
-	InputHandler.cpp GameStateMachine.cpp MenuState.cpp PlayState.cpp\
-	MenuButton.cpp PauseState.cpp Enemy.cpp AnimatedGraphic.cpp GameOverState.cpp
-OBJS = $(SRCS:.c=.o)
+LIBS = `sdl2-config --libs` -lSDL2_image -ltinyxml
+SRCS = Game.cpp main.cpp TextureManager.cpp SDLGameObject.cpp\
+	InputHandler.cpp \
+	MenuButton.cpp GameObjectFactory.cpp StateParser.cpp\
+	GameStateMachine.cpp MainMenuState.cpp PauseState.cpp GameOverState.cpp PlayState.cpp\
+	Player.cpp Enemy.cpp AnimatedGraphic.cpp
+OBJS = $(SRCS:.cpp=.o)
 MAIN = myprog
 
 .PHONY: all clean

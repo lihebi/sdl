@@ -2,10 +2,11 @@
 #define __PAUSE_STATE_H__
 
 #include "GameState.h"
+#include "MenuState.h"
 
 class GameObject;
 
-class PauseState : public GameState
+class PauseState : public MenuState
 {
 public:
   PauseState ();
@@ -18,6 +19,8 @@ public:
   virtual bool onExit();
 
   virtual std::string getStateID() const { return s_pauseID; }
+
+  virtual void setCallbacks(const std::vector<Callback> &callbacks);
 
 private:
 

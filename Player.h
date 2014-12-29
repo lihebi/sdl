@@ -2,15 +2,25 @@
 #define __PLAYER_H__
 
 #include "SDLGameObject.h"
+#include "GameObjectFactory.h"
 
 class Player : public SDLGameObject {
 public:
 
-  Player(const LoaderParams *pParams);
+  Player();
   virtual void draw();
   virtual void update();
   virtual void clean();
+
+  void load(const LoaderParams *pParams);
+
   void handleInput();
 };
 
-#endif
+class PlayerCreator : public BaseCreator {
+  GameObject* createGameObject() const {
+    return new Player();
+  }
+};
+
+#endif /* end of include guard: __PLAYER_H__ */

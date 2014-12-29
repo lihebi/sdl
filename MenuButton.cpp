@@ -2,9 +2,13 @@
 #include "InputHandler.h"
 #include "Vector2D.h"
 
-MenuButton::MenuButton(const LoaderParams *pParams, void (*callback)()) :
-SDLGameObject(pParams), m_callback(callback) {
-  m_currentFrame = MOUSE_OUT; // start at frame 0
+MenuButton::MenuButton() : SDLGameObject() {
+}
+
+void MenuButton::load(const LoaderParams *pParams) {
+  SDLGameObject::load(pParams);
+  m_callbackID = pParams->getCallbackID();
+  m_currentFrame = MOUSE_OUT;
 }
 
 void MenuButton::draw() {
