@@ -24,8 +24,6 @@ private:
   static void s_exitFromMenu();
 
   static const std::string s_menuID;
-
-  std::vector<GameObject*> m_gameObjects;
 };
 
 #endif

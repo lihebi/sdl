@@ -29,8 +29,6 @@ private:
   static void s_restartPlay();
 
   static const std::string s_gameOverID;
-
-  std::vector<GameObject*> m_gameObjects;
 };
 
 #endif /* end of include guard: __GAME_OVER_STATE_H__ */

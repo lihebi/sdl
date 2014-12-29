@@ -55,17 +55,7 @@ void PauseState::setCallbacks(const std::vector<Callback> &callbacks) {
 }
 
 bool PauseState::onExit() {
-  for (int i=0;i<m_gameObjects.size();i++) {
-    m_gameObjects[i]->clean();
-  }
-  m_gameObjects.clear();
-  // TheTextureManager::Instance()->clearFromTextureMap("resumebutton");
-  // TheTextureManager::Instance()->clearFromTextureMap("mainbutton");
-
-  for (int i=0;i<m_textureIDList.size();i++) {
-    TheTextureManager::Instance()->clearFromTextureMap(m_textureIDList[i]);
-  }
-
+  GameState::onExit();
   TheInputHandler::Instance()->reset();
   return true;
 }

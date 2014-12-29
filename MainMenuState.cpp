@@ -34,16 +34,7 @@ bool MainMenuState::onEnter() {
 }
 
 bool MainMenuState::onExit() {
-  std::cout<<"Exiting MainMenuState"<<std::endl;
-
-  for (int i=0;i<m_gameObjects.size();i++) {
-    m_gameObjects[i]->clean();
-  }
-  m_gameObjects.clear();
-  for (int i=0;i<m_textureIDList.size();i++) {
-    TheTextureManager::Instance()->clearFromTextureMap(m_textureIDList[i]);
-  }
-
+  GameState::onExit();
   return true;
 }
 
