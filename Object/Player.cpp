@@ -1,5 +1,5 @@
 #include "Player.h"
-#include "InputHandler.h"
+#include "../InputHandler.h"
 
 Player::Player() : SDLGameObject() {
 }

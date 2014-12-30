@@ -2,6 +2,7 @@
 #define __MENU_STATE_H__
 
 #include "GameState.h"
+#include "../Game.h"
 #include<vector>
 
 class MenuState : public GameState {

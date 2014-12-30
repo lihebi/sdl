@@ -4,8 +4,9 @@
 #include <string>
 #include <vector>
 #include <iostream>
-#include "TextureManager.h"
-#include "GameObject.h"
+#include "../TextureManager.h"
+#include "../Object/GameObject.h"
+// #include "../Game.h"
 
 class GameState {
 public:

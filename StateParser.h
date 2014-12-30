@@ -4,7 +4,7 @@
 #include<vector>
 #include<tinyxml.h>
 
-class GameObject;
+#include "Object/GameObject.h"
 
 class StateParser {
 public:

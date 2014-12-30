@@ -1,6 +1,6 @@
 #include "MenuButton.h"
-#include "InputHandler.h"
-#include "Vector2D.h"
+#include "../InputHandler.h"
+#include "../Vector2D.h"
 
 MenuButton::MenuButton() : SDLGameObject() {
 }

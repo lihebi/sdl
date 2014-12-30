@@ -1,13 +1,17 @@
 CC=g++
 CFLAGS = -g -Wall `sdl2-config --cflags`
-INCLUDES = -I/usr/local/include
+INCLUDES = -I/. -I/usr/local/include
 LFLAGS =
-LIBS = `sdl2-config --libs` -lSDL2_image -ltinyxml
-SRCS = Game.cpp main.cpp TextureManager.cpp SDLGameObject.cpp\
-	InputHandler.cpp \
-	MenuButton.cpp GameObjectFactory.cpp StateParser.cpp\
-	GameStateMachine.cpp MainMenuState.cpp PauseState.cpp GameOverState.cpp PlayState.cpp\
-	Player.cpp Enemy.cpp AnimatedGraphic.cpp
+LIBS = `sdl2-config --libs` -lSDL2_image -ltinyxml -lz
+STATE_SRC = $(addprefix State/, GameStateMachine.cpp MainMenuState.cpp \
+	PauseState.cpp GameOverState.cpp PlayState.cpp)
+OBJECT_SRC = $(addprefix Object/, SDLGameObject.cpp MenuButton.cpp \
+	GameObjectFactory.cpp Player.cpp Enemy.cpp AnimatedGraphic.cpp)
+MAP_SRC = $(addprefix Map/, Level.cpp TileLayer.cpp LevelParser.cpp)
+SRCS = Game.cpp main.cpp TextureManager.cpp InputHandler.cpp \
+	StateParser.cpp base64.cpp
+
+SRCS += $(STATE_SRC) $(OBJECT_SRC) $(MAP_SRC)
 OBJS = $(SRCS:.cpp=.o)
 MAIN = myprog
 
@@ -24,4 +28,4 @@ $(MAIN): $(OBJS)
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 clean:
-	$(RM) *.o *~ $(MAIN)
+	$(RM) $(OBJS) $(MAIN)

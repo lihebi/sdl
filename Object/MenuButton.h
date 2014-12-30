@@ -2,7 +2,6 @@
 #define __MENU_BUTTON_H__
 
 #include "SDLGameObject.h"
-#include "LoaderParams.h"
 #include "GameObjectFactory.h"
 
 class MenuButton : public SDLGameObject {

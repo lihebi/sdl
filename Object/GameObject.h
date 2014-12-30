@@ -3,7 +3,7 @@
 
 #include<string>
 #include<SDL.h>
-#include "LoaderParams.h"
+#include "../LoaderParams.h"
 
 class GameObject {
 public:

@@ -1,8 +1,7 @@
 #include "StateParser.h"
 #include "Game.h"
 #include "TextureManager.h"
-#include "GameObjectFactory.h"
-#include "GameObject.h"
+#include "Object/GameObjectFactory.h"
 #include <iostream>
 
 bool StateParser::parseState(const char *stateFile, std::string stateID,

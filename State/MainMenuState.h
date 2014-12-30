@@ -1,9 +1,11 @@
 #ifndef __MAIN_MENU_STATE_H__
 #define __MAIN_MENU_STATE_H__
 
-#include "GameState.h"
+// #include "GameState.h"
 #include "MenuState.h"
-#include "GameObject.h"
+// #include "GameObject.h"
+
+class GameObject;
 
 class MainMenuState : public MenuState {
 public:

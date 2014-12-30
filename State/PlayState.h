@@ -2,8 +2,9 @@
 #define __PLAY_STATE_H__
 
 #include "GameState.h"
-#include "GameObject.h"
-#include "SDLGameObject.h"
+#include "../Map/Level.h"
+
+class SDLGameObject;
 
 class PlayState : public GameState {
 public:
@@ -21,6 +22,7 @@ public:
 private:
 
   static const std::string s_playID;
+  Level *pLevel;
 };
 
 

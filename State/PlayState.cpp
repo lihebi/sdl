@@ -1,12 +1,11 @@
 #include "PlayState.h"
-#include "TextureManager.h"
-#include "Game.h"
-#include "Player.h"
-#include "Enemy.h"
-#include "InputHandler.h"
+#include "../Object/Player.h"
+#include "../Object/Enemy.h"
+#include "../InputHandler.h"
 #include "PauseState.h"
 #include "GameOverState.h"
-#include "StateParser.h"
+#include "../StateParser.h"
+#include "../Map/LevelParser.h"
 
 const std::string PlayState::s_playID = "PLAY";
 
@@ -29,10 +28,14 @@ void PlayState::render() {
   for (int i=0;i<m_gameObjects.size();i++) {
     m_gameObjects[i]->draw();
   }
+  pLevel->render();
 }
 
 bool PlayState::onEnter() {
-  std::cout<<"Entering PlayState"<<std::endl;
+  std::cout<<"going to parse.."<<std::endl;
+  LevelParser levelParser;
+  pLevel = levelParser.parseLevel("assets/map1.tmx");
+  std::cout<<"finish parsing"<<std::endl;
 
   StateParser stateParser;
   stateParser.parseState("test.xml", s_playID, &m_gameObjects, &m_textureIDList);

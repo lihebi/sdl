@@ -5,9 +5,8 @@
 #include<vector>
 #include<iostream>
 #include "TextureManager.h"
-#include "GameObject.h"
-#include "Player.h"
-#include "GameStateMachine.h"
+#include "Object/GameObject.h"
+#include "State/GameStateMachine.h"
 
 class Game {
 public:
@@ -38,11 +37,16 @@ public:
   GameStateMachine* getStateMachine() { return m_pGameStateMachine; }
   void requestChangeState(GameState *pState);
 
+  int getGameWidth() const { return m_gameWidth; }
+  int getGameHeight() const { return m_gameHeight; }
+
 private:
   Game() {}
   ~Game() {}
   static Game *s_pInstance;
 
+  int m_gameWidth;
+  int m_gameHeight;
 
   SDL_Window *m_pWindow;
   SDL_Renderer *m_pRenderer;

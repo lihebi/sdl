@@ -1,17 +1,20 @@
 #include "Game.h"
 #include "LoaderParams.h"
 #include "InputHandler.h"
-#include "MainMenuState.h"
-#include "PlayState.h"
-#include "GameObjectFactory.h"
-#include "MenuButton.h"
-#include "Player.h"
-#include "Enemy.h"
-#include "AnimatedGraphic.h"
+#include "State/MainMenuState.h"
+#include "State/PlayState.h"
+#include "Object/GameObjectFactory.h"
+#include "Object/MenuButton.h"
+#include "Object/Player.h"
+#include "Object/Enemy.h"
+#include "Object/AnimatedGraphic.h"
 
 Game* Game::s_pInstance = 0;
 
 bool Game::init(const char *title, int xpos, int ypos, int width, int height, int flags) {
+  m_gameWidth = width;
+  m_gameHeight = height;
+
   SDL_Init(SDL_INIT_EVERYTHING);
   m_pWindow = SDL_CreateWindow(title, xpos, ypos, width, height, flags);
   m_pRenderer = SDL_CreateRenderer(m_pWindow, -1, 0);

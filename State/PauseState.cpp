@@ -1,10 +1,8 @@
 #include "PauseState.h"
-#include "Game.h"
-#include "TextureManager.h"
-#include "MenuButton.h"
+#include "../Object/MenuButton.h"
 #include "MainMenuState.h"
-#include "InputHandler.h"
-#include "StateParser.h"
+#include "../InputHandler.h"
+#include "../StateParser.h"
 
 const std::string PauseState::s_pauseID = "PAUSE";
 

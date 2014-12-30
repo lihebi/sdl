@@ -1,5 +1,5 @@
 #include "Enemy.h"
-#include "InputHandler.h"
+#include "../InputHandler.h"
 
 Enemy::Enemy() : SDLGameObject() {
 }
