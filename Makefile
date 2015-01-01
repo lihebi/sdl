@@ -7,7 +7,7 @@ STATE_SRC = $(addprefix State/, GameStateMachine.cpp MainMenuState.cpp \
 	PauseState.cpp GameOverState.cpp PlayState.cpp)
 OBJECT_SRC = $(addprefix Object/, SDLGameObject.cpp MenuButton.cpp \
 	GameObjectFactory.cpp Player.cpp Enemy.cpp AnimatedGraphic.cpp)
-MAP_SRC = $(addprefix Map/, Level.cpp TileLayer.cpp LevelParser.cpp)
+MAP_SRC = $(addprefix Map/, Level.cpp TileLayer.cpp LevelParser.cpp ObjectLayer.cpp)
 SRCS = Game.cpp main.cpp TextureManager.cpp InputHandler.cpp \
 	StateParser.cpp base64.cpp
 

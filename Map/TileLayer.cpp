@@ -11,6 +11,7 @@ m_tileSize(tileSize), m_tilesets(tilesets), m_position(0,0), m_velocity(0,0) {
 TileLayer::~TileLayer() {}
 
 void TileLayer::update() {
+  m_velocity.setX(1);
   m_position += m_velocity;
 }
 
@@ -24,7 +25,7 @@ void TileLayer::render() {
   y2 = int(m_position.getY()) % m_tileSize;
 
   for (int i=0;i<m_numRows;i++) {
-    for (int j=0;j<m_numColumns;j++) {
+    for (int j=0;j<m_numColumns+1;j++) {
       int id = m_tileIDs[i][j+x];
 
       if (id==0) {

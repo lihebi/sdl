@@ -22,6 +22,7 @@ void PlayState::update() {
     dynamic_cast<SDLGameObject*>(m_gameObjects[1]))) {
     TheGame::Instance()->getStateMachine()->pushState(new GameOverState());
   }
+  pLevel->update();
 }
 
 void PlayState::render() {
